@@ -56,22 +56,19 @@ body {
 }
 
 .text-block {
-  padding: 360px;
-  font-size: 160px;
+  padding: 120px;
+  font-size: 20px;
   box-sizing: border-box;
   color: var(--color-text);
   overflow: hidden;
-  
 }
 
-#top-img-container > img {
+#top-container > img {
   height: 100%;
-  width: 100%;
-  box-sizing: border-box;
+  width: auto;
 }
 
-#bottom-img-container > img {
+#bottom-container > img {
   height: 100%;
-  width: 100%;
-  box-sizing: border-box;
+  width: auto;
 }
