@@ -1,1 +1,1 @@
-# BasicsWeb
+# Basics of web technologies
