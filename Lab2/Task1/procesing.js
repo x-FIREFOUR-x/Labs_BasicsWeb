@@ -4,20 +4,23 @@ let incorrectInputBackgroundColor = rootStyles.getPropertyValue('--incorrect-inp
 
 function validateDataForm(data)
 {
-	if (validateFullName(data.fullname) &
-        validateBirthDate(data.birthdate) &
-		validateAddress(data.address) &
-        validateEmail(data.email) &
-        validateTelegram(data.telegram))
+	var outputMessage = {value: ""}
+
+	if (validateFullName(data.fullname, outputMessage) &
+        validateBirthDate(data.birthdate, outputMessage) &
+		validateAddress(data.address, outputMessage) &
+        validateEmail(data.email, outputMessage) &
+        validateTelegram(data.telegram, outputMessage))
 	{
-        printData(data)
+        printData(data);
 		return true;
 	}
 	
+	window.alert(outputMessage.value);
 	return false;
 }
 
-function validateFullName(fullname)
+function validateFullName(fullname, output)
 {
 	if (fullname.value != null && (/^[A-ZА-ЯІҐЄЇ][a-zа-яіґєї]+ [A-ZА-ЯІҐЄЇ]\.[A-ZА-ЯІҐЄЇ]\.$/.test(fullname.value)))
 	{
@@ -25,13 +28,13 @@ function validateFullName(fullname)
 		return true;
 	}
 
-	fullname.value = ""
+	fullname.value = "";
 	fullname.style.background = incorrectInputBackgroundColor;
-	window.alert("Некоректно введений ПІБ!")
+	output.value = output.value + "Некоректно введений ПІБ!" + "\n";
 	return false;
 }
 
-function validateBirthDate(birthdate)
+function validateBirthDate(birthdate, output)
 {
 	if (birthdate.value != null && Date.parse(birthdate.value) < Date.now())
 	{
@@ -39,13 +42,12 @@ function validateBirthDate(birthdate)
 		return true;
 	}
 	
-	
 	birthdate.style.background = incorrectInputBackgroundColor;
-	window.alert("Некоректно введена дата народження!")
+	output.value = output.value +"Некоректно введена дата народження!" + "\n";
 	return false;
 }
 
-function validateAddress(address)
+function validateAddress(address, output)
 {
 	if (address.value != null && (/^м. [А-ЯІҐЄЇ-]+$/.test(address.value)))
 	{
@@ -53,13 +55,13 @@ function validateAddress(address)
 		return true;
 	}
 
-	address.value = ""
+	address.value = "";
 	address.style.background = incorrectInputBackgroundColor;
-    window.alert("Некоректно введена адреса!")
+    output.value = output.value +"Некоректно введена адреса!" + "\n";
 	return false;
 }
 
-function validateEmail(email)
+function validateEmail(email, output)
 {
 	if (email.value != null && (/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/gm.test(email.value)))
 	{
@@ -67,13 +69,13 @@ function validateEmail(email)
 		return true;
 	}
 
-	email.value = ""
+	email.value = "";
 	email.style.background = incorrectInputBackgroundColor;
-	window.alert("Некоректно введений e-mail!")
+	output.value = output.value +"Некоректно введений e-mail!" + "\n";
 	return false;
 }
 
-function validateTelegram(telegram)
+function validateTelegram(telegram, output)
 {
 	if (telegram.value != null && (/^@[A-Za-z0-9.-_]+$/.test(telegram.value)))
 	{
@@ -81,9 +83,9 @@ function validateTelegram(telegram)
 		return true;
 	}
 
-	telegram.value = ""
+	telegram.value = "";
 	telegram.style.background = incorrectInputBackgroundColor;
-	window.alert("Некоректно введений telegram!")
+	output.value = output.value +"Некоректно введений telegram!" + "\n";
 	return false;
 }
 

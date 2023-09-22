@@ -13,10 +13,6 @@ html {
     --incorrect-input-bg-color: #e83e55;
 }
 
-input {
-    background: var(--inp-bg-color);
-}
-
 body {
     width: 100%;
     height: 100%;
@@ -25,6 +21,10 @@ body {
     display: flex;
     flex-direction: row;
     text-align: center;
+}
+
+input {
+    background: var(--input-bg-color);
 }
 
 #form{
