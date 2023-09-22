@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Input Form</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <form id="form">
+        <label for=fullname>ПІБ:</label><br>
+        <input id=fullname name=fullname type="text" placeholder="Прізвище І.Б."><br><br>
+
+        <label for=birthdate>Дата народження:</label><br>
+        <input id=birthdate name=birthdate type="date"><br><br>
+
+        <label for=address>Адреса:</label><br>
+        <input id=address name=address type="text" placeholder="м. Київ"><br><br>
+
+        <label for=email>e-mail:</label><br>
+        <input id=email name=email type="email" placeholder="name@gmail.com"><br><br>
+
+        <label for=telegram>Telegram:</label><br>
+        <input id=telegram name=telegram type="text" placeholder="@name"><br><br>
+
+        <input id=submit-button name=submit-button type="submit" value="Submit"
+            onClick="return validateDataForm(this.form)">
+    </form>
+</body>
+<script src="./procesing.js"></script>
+
+</html>
