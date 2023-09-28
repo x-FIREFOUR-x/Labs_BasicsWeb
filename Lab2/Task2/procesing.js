@@ -31,17 +31,10 @@ function SetRectangleColor(cell, numberCell){
     const y = Math.floor((numberCell - 1) / tableHeight);
     const x = (numberCell - 1) % tableWidth;
 
-    for (let i = y; i < tableHeight; i++){
-		document.getElementById(`td-${i}-${x}`).style.background = color;
-	}
-    for (let i = x; i >= 0; i--){
-		document.getElementById(`td-${tableHeight - 1}-${i}`).style.background = color;
-	}
-    for (let i = tableHeight - 1; i >= y; i--){
-		document.getElementById(`td-${i}-${0}`).style.background = color;
-	}
-    for (let i = 0; i <= x; i++){
-		document.getElementById(`td-${y}-${i}`).style.background = color;
+	for (let i = y; i < tableHeight; i++){
+		for (let j = x; j < tableWidth; j++){
+			document.getElementById(`td-${i}-${j}`).style.background = color;
+		}
 	}
 }
 
