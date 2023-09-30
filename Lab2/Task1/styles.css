@@ -1,0 +1,48 @@
+html {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    
+    --submit-button-color: #638cec;
+    --active-submit-button-color: #1026ec;
+    --submit-button-text-color: #e8ec17;
+
+    --input-bg-color: #ffffff;
+    --incorrect-input-bg-color: #e83e55;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    padding: 1em;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+input {
+    background: var(--input-bg-color);
+}
+
+#form{
+    text-align: justify;
+}
+
+#submit-button {
+    background: var(--submit-button-color);
+    color: var(--submit-button-text-color);
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 2.1em;
+    text-align: center;
+    height: 2em;
+    width: 5em;
+}
+
+#submit-button:hover,
+#submit-button:focus {
+    background-color: var(--active-submit-button-color);
+}
