@@ -1,0 +1,49 @@
+:root {
+    --main-bg: #40e018;
+    --usercard-bg: #ffffff;
+    --fatchbutton-bg: #fffb00;
+    --fatchbutton-text: #000000;
+    --fatchbutton-hover-bg: #bad121;
+}
+
+html,
+body {
+    background-color: var(--main-bg);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#usersContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+    margin: 15px;
+}
+
+.userCard {
+    background-color: var(--usercard-bg);
+    padding: 20px 40px;
+    border: 2px solid;
+    text-align: center;
+}
+
+p {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+#fetchButton {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: var(--fatchbutton-bg);
+    color: var(--fatchbutton-text);
+    border-radius: 4px;
+}
+
+#fetchButton:hover {
+    background-color: var(--fatchbutton-hover-bg);
+}
