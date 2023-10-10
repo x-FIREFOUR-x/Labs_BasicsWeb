@@ -1,5 +1,5 @@
-import express from 'express'
-import http from 'http'
+import express from 'express';
+import http from 'http';
 import { Server } from 'socket.io';
 
 const app = express();
@@ -14,12 +14,12 @@ const io = new Server(server, {
 
 io.on('connection', socket => {
     socket.on("login", username => {
-        socket.username = username
+        socket.username = username;
         io.emit("user login", username + ' has joined the chat!');
     });
 
-    socket.on("chat message", msg => {
-        io.emit("chat message", { user: socket.username, message: msg });
+    socket.on("chat message", message => {
+        io.emit("chat message", { user: socket.username, message: message });
     });
 
     socket.on("disconnect", () => {
