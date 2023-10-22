@@ -14,6 +14,15 @@
 </script>
 
 <div>
-    <input type="text" bind:value={userName} placeholder="Username"/>
+    <input class="input-login" type="text" bind:value={userName} placeholder="Username"/>
     <button on:click={handleLogin}> Login </button>
 </div>
+
+<style> 
+    .input-login {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+</style>

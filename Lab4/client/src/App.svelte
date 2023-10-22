@@ -59,16 +59,30 @@
 </div>
 
 <style>
-  .chat{
+  .chat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    width: 600px;
+    margin: auto;
     height: 100vh;
   }
-  .name{
-    
-    justify-content: 0;
-    color: #4620f2;
+
+  .name {
+    font-size: 30px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    padding-left: 5%;
   }
-  .messages{
-    display: block;
-    padding: 5%;
+
+  .messages {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: scroll;
+    width: 100%;
+    height: 80vh;
+    max-height: 80vh;
   }
 </style>

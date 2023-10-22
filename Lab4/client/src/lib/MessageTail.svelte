@@ -10,24 +10,25 @@
 </main>
 
 <style>
-    .message-tail{
-      background:#0a72ea;
-      border-radius: 8px;
-      max-width: 10%;
-      margin: 0 auto;
+    .message-tail {
+        background-color: #107fe8;
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
     }
-    .message-text{
-      color:#000000;
-      font-size: 1em;
-      text-align: center;
-      margin: 0;
-      margin-top: 2%;
+
+    .message-text {
+        margin: 0 0 5px 0;
     }
-    .message-author{
-      color:#000000;
-      font-size: 0.75em;
-      margin: 0;
-      padding-right: 2%;
-      text-align: end;
+
+    .message-author {
+        align-self: flex-end;
+        font-size: 12px;
+        color: #ffffff;
+        margin: 0;
     }
-  </style>
+</style>

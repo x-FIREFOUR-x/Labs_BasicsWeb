@@ -20,8 +20,30 @@
 </div>
 
 <style>
-    .input-message{
-        margin: 0;
-        text-align: center;
+    .input-message {
+        display: flex;
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .input-message input {
+        flex-grow: 1;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .input-message button {
+        margin-left: 10px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007BFF;
+        color: white;
+        cursor: pointer;
+    }
+
+    .input-message button:hover {
+        background-color: #0056b3;
     }
 </style>
