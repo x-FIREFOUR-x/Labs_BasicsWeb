@@ -16,6 +16,7 @@ let loggeedUsers = []
 
 io.on('connection', socket => {
     socket.on("login", username => {
+        console.log(loggeedUsers, " ", username)
         if (username === "", loggeedUsers.includes(username)) {
             socket.emit("access event", { isAllowed: false })
             return
@@ -39,6 +40,7 @@ io.on('connection', socket => {
         }
         io.emit("user disconnected", { message: `${socket.username}  has left the chat!` });
         loggeedUsers.pop(socket.username)
+        console.log(loggeedUsers)
     });
 });
 
