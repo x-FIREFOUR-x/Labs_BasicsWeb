@@ -34,7 +34,7 @@
       if (!userName) {
         return;
       }
-      messages = [...messages, new Message("user disconnected", data, null)]
+      messages = [...messages, new Message("user disconnected", data.message, null)]
     })
 
     socket.on("access event", (data) => {

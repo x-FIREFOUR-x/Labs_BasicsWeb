@@ -37,7 +37,7 @@ io.on('connection', socket => {
         if (!socket.username) { 
             return;
         }
-        io.emit("user disconnected", socket.username + ' has left the chat');
+        io.emit("user disconnected", { message: `${socket.username}  has left the chat!` });
         loggeedUsers.pop(socket.username)
     });
 });
