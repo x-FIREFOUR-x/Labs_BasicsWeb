@@ -46,12 +46,29 @@
   {#if !userName}
       <Login on:login={handleLogin} />
   {:else}
-      <h1>{userName}</h1>
-      <SendBar on:message={handleMessage}/>
-      <ul>
-          {#each messages as message}
-              <MessageTail message={message} />
-          {/each}
+    <div class="chat">
+      <h1 class=name>{userName}</h1>
+      <ul class=messages>
+        {#each messages as message}
+            <MessageTail message={message} />
+        {/each}
       </ul>
+      <SendBar on:message={handleMessage}/>
+    </div>
   {/if}
 </div>
+
+<style>
+  .chat{
+    height: 100vh;
+  }
+  .name{
+    
+    justify-content: 0;
+    color: #4620f2;
+  }
+  .messages{
+    display: block;
+    padding: 5%;
+  }
+</style>
