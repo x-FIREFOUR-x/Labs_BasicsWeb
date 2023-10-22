@@ -12,18 +12,33 @@ const io = new Server(server, {
   }
 });
 
+let loggeedUsers = []
+
 io.on('connection', socket => {
     socket.on("login", username => {
+        if (username === "", loggeedUsers.includes(username)) {
+            socket.emit("access event", { isAllowed: false })
+            return
+        }
+        loggeedUsers.push(username)
         socket.username = username;
-        io.emit("user login", username + ' has joined the chat!');
+        socket.emit("access event", { isAllowed: true });
+        socket.broadcast.emit("user login", { message: `${username} has joined the chat!` });
     });
 
     socket.on("chat message", message => {
+        if (!socket.username) { 
+            return;
+        }
         io.emit("chat message", { user: socket.username, message: message });
     });
 
     socket.on("disconnect", () => {
+        if (!socket.username) { 
+            return;
+        }
         io.emit("user disconnected", socket.username + ' has left the chat');
+        loggeedUsers.pop(socket.username)
     });
 });
 

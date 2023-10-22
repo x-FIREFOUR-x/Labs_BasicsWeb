@@ -11,6 +11,8 @@
   let userName = "";
   let socket;
 
+  let isLoggeed = false
+
   onMount(() => {
     socket = socketIOClient('http://localhost:3000');
 
@@ -18,15 +20,25 @@
       if (!userName) {
         return;
       }
-      const message = new Message("chat message", data.message, data.user);
-      messages = [...messages, message];
+      messages = [...messages, new Message("chat message", data.message, data.user)];
     })
 
     socket.on("user login", (data) => {
       if (!userName) {
         return;
       }
-      messages = [...messages, new Message("user login", data, null)];
+      messages = [...messages, new Message("user login", data.message, null)];
+    })
+
+    socket.on("user disconnected", (data) => {
+      if (!userName) {
+        return;
+      }
+      messages = [...messages, new Message("user disconnected", data, null)]
+    })
+
+    socket.on("access event", (data) => {
+      isLoggeed = data.isAllowed
     })
   });
 
@@ -43,7 +55,7 @@
 
 
 <div>
-  {#if !userName}
+  {#if !isLoggeed}
       <Login on:login={handleLogin} />
   {:else}
     <div class="chat">
