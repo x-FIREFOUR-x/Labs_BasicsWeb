@@ -1,0 +1,18 @@
+body {
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  background-color: #000;
+}
+
+div button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+}
+
+div button:hover {
+  background-color: #0056b3;
+}

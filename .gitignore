@@ -8,4 +8,5 @@
 /dataSources/
 /dataSources.local.xml
 /.idea
-/*/node_modules/
+*node_modules/
+
