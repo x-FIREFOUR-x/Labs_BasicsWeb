@@ -1,6 +1,6 @@
 <script>
     import InputField from "./InputField.svelte";
-    import { loginRegex, passwordRegex } from "./fieldsRegex.js";
+    import { loginRegex, passwordRegex } from "./data/fieldsRegex.js";
     import { createEventDispatcher } from 'svelte';
 
     const dispatch = createEventDispatcher();

@@ -1,6 +1,6 @@
 <script>
     import { onMount } from "svelte";
-    import { TypeAuthForm } from "./lib/TypeAuthForm.js";
+    import { TypeAuthForm } from "./lib/data/TypeAuthForm.js";
     import LoginForm from "./lib/LoginForm.svelte";
     import RegistrationForm from "./lib/RegistrationForm.svelte";
     
