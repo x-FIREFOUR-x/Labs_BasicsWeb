@@ -36,7 +36,7 @@
     async function handleSuccessResult(res) {
         const data = await res.json();
         if (data.token) {
-            dispatch("success", data.token)
+            dispatch("success", data)
         }
     }
 

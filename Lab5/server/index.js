@@ -23,7 +23,7 @@ async function saveUser(newUser){
     fs.writeFileSync(pathDataBase, updatedJsonString, 'utf-8');
 }
 
-async function findUser(login){
+function findUser(login){
     const jsonData = fs.readFileSync(pathDataBase, 'utf-8');
     const jsonObject = JSON.parse(jsonData);
 
@@ -45,7 +45,7 @@ const app = express();
 app.use(express.json());
 app.use(cors())
 
-app.post('/auth/register', async (req, res) => {
+app.post('/auth/registration', async (req, res) => {
     try {
         const user = {
             login: req.body.login,
@@ -59,7 +59,8 @@ app.post('/auth/register', async (req, res) => {
         };
         await saveUser(user);
         const token = createToken(user.login, user.role);
-        res.send({ message: "User registered successfully!", token });
+        delete user.password;
+        res.json({ message: "User registered successfully!", token: token, user: user});
     } catch (error) {
         if (error.code === 1000) {
             res.status(422).send({ message: "This login already exists!" });
@@ -74,7 +75,8 @@ app.post('/auth/login', async (req, res) => {
         const user = findUser(req.body.login);
         if (user && bcrypt.compareSync(req.body.password, user.password)) {
             const token = createToken(user.login, user.role);
-            res.send({message: "User logged in!", token});
+            delete user.password;
+            res.json({message: "User logged in!", token: token, user: user});
         } else {
             res.status(400).send({ message: "Invalid credentials!" });
         }
