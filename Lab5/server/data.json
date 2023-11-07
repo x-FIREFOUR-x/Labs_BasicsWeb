@@ -1,11 +1,20 @@
 [
   {
-    "login": "user2",
+    "login": "admin",
     "password": "$2b$10$3Fgt6wXVoFUg7f3PPK9.V.WZBrPLZFyUavQ/M2iqYSY5TIiBddvSK",
     "role": "admin",
     "name": "Олександр І.І.",
     "group": "ІП-01",
     "variant": "3",
     "phoneNumber": "0981234561"
+  },
+  {
+    "login": "user",
+    "password": "$2b$10$K4qVTfYiOIRPS/XvXn1zNOCs79p70RyTq0FWp3KRzW.AhZCW7Ph6K",
+    "role": "user",
+    "name": "Іван П.П.",
+    "group": "ІП-01",
+    "variant": "2",
+    "phoneNumber": "0971231425"
   }
 ]

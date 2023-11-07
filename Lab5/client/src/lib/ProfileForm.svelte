@@ -43,7 +43,6 @@
 
     async function handleSuccessResult(res) {
         findingUser = await res.json();
-        console.log(user)
         errorMessage = ""
     }
 
@@ -82,12 +81,12 @@
 
             {#if findingUser}
                 <div class="finded-user-info">
-                    <p>Логін: {user.login}</p>
-                    <p>Роль: {user.role}</p>
-                    <p>Ім'я: {user.name}</p>
-                    <p>Група: {user.group}</p>
-                    <p>Варіант: {user.variant}</p>
-                    <p>Номер телефона: {user.phoneNumber}</p>
+                    <p>Логін: {findingUser.login}</p>
+                    <p>Роль: {findingUser.role}</p>
+                    <p>Ім'я: {findingUser.name}</p>
+                    <p>Група: {findingUser.group}</p>
+                    <p>Варіант: {findingUser.variant}</p>
+                    <p>Номер телефона: {findingUser.phoneNumber}</p>
                 </div>
             {/if}
         {/if}

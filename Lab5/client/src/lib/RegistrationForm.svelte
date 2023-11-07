@@ -6,7 +6,7 @@
     const dispatch = createEventDispatcher();
 
     const urlRegistration = "http://localhost:3000/auth/registration"
-    const roles = ["user", "admin"]
+    const roles = ["user"]//, "admin"]
 
     let login = ""
     let password = ""
