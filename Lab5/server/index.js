@@ -40,6 +40,17 @@ function createToken(login, role){
     return jwt.sign({ login: login, role: role }, 'JustSecretKey', { expiresIn: '1h' })
 }
 
+const verifyToken = (req, res, next) => {
+    let token = req.header('Authorization');
+    if (!token) return res.status(403).send({message: "No token provided."});
+    token = token.replace('Bearer ', '')
+    jwt.verify(token, 'JustSecretKey', (err, decoded) => {
+        if (err) return res.status(500).send({message: "Failed to authenticate token."});
+        req.userLogin = decoded.login;
+        req.userRole = decoded.role;
+        next();
+    });
+}
 
 const app = express();
 app.use(express.json());
@@ -82,6 +93,23 @@ app.post('/auth/login', async (req, res) => {
         }
     } catch (err) {
         res.status(500).send(err);
+    }
+});
+
+app.post('/user/:login', verifyToken, async (req, res) => {
+    const { login } = req.params;
+    if (req.userRole !== "admin" && req.userLogin !== login) {
+        return res.status(403).send({message: "Only admins can get the other user info."});
+    }
+
+    try {
+        const user = await findUser(login);
+        if (!user) 
+            return res.status(404).send({message: "User not found."});
+  
+        res.send(user);
+    } catch (err) {
+        res.status(500).send({message: err});
     }
 });
 
