@@ -41,6 +41,34 @@
         isWaitingResult = false
     }
 
+    const urlUserSetAdminAuth = "http://localhost:3000/user-set-admin"
+
+    $: isEnabledButtonSetAdmin = user && !isWaitingResult
+
+    async function setAdminUser(){
+        isWaitingResult = true
+        
+        const token = localStorage.getItem("jwt")
+        const path = `${urlUserSetAdminAuth}/${findingUser.login}`
+        
+        const res = await fetch(path, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({ findingUserLogin }),
+        });
+        
+        if (res.status == 200) {
+            await handleSuccessResult(res)
+        } else {
+            await handleFailResult(res)
+        }
+
+        isWaitingResult = false
+    }
+
     async function handleSuccessResult(res) {
         findingUser = await res.json();
         errorMessage = ""
@@ -88,6 +116,7 @@
                     <p>Варіант: {findingUser.variant}</p>
                     <p>Номер телефона: {findingUser.phoneNumber}</p>
                 </div>
+                <button on:click={setAdminUser} disabled={!isEnabledButtonSetAdmin}>Set Admin</button>
             {/if}
         {/if}
     {/if}

@@ -23,6 +23,22 @@ async function saveUser(newUser){
     fs.writeFileSync(pathDataBase, updatedJsonString, 'utf-8');
 }
 
+async function updateUser(newUser){
+    const jsonData = fs.readFileSync(pathDataBase, 'utf-8');
+    const jsonObject = JSON.parse(jsonData);
+
+    index = jsonObject.findIndex(user => user.login === newUser.login)
+    if (index == -1){
+        error = new Error("User not exist");
+        error.code = 1000;
+        throw error;
+    }
+
+    jsonObject[index] = newUser;
+    const updatedJsonString = JSON.stringify(jsonObject, null, 2);
+    fs.writeFileSync(pathDataBase, updatedJsonString, 'utf-8');
+}
+
 function findUser(login){
     const jsonData = fs.readFileSync(pathDataBase, 'utf-8');
     const jsonObject = JSON.parse(jsonData);
@@ -107,6 +123,25 @@ app.post('/user/:login', verifyToken, async (req, res) => {
         if (!user) 
             return res.status(404).send({message: "User not found."});
   
+        res.send(user);
+    } catch (err) {
+        res.status(500).send({message: err});
+    }
+});
+
+app.post('/user-set-admin/:login', verifyToken, async (req, res) => {
+    const { login } = req.params;
+    if (req.userRole !== "admin" && req.userLogin !== login) {
+        return res.status(403).send({message: "Only admins can set admin other user."});
+    }
+
+    try {
+        const user = await findUser(login);
+        if (!user) 
+            return res.status(404).send({message: "User not found."});
+  
+        user.role = "admin";
+        updateUser(user);
         res.send(user);
     } catch (err) {
         res.status(500).send({message: err});
